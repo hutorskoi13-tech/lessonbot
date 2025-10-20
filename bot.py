@@ -169,3 +169,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+from flask import Flask
+import threading
+
+def run_web():
+    app = Flask("")
+    @app.route('/')
+    def home():
+        return "Bot is running"
+    app.run(host='0.0.0.0', port=8080)
+
+threading.Thread(target=run_web).start()
